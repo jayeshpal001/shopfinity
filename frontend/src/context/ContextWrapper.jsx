@@ -5,12 +5,14 @@ import { ProductProvider } from "./ProductContext";
 
 export const ContextWrapper = ({ children }) => {
   return (
+    <UIProvider>
     <AuthProvider>
       <ProductProvider>
         <CartProvider>
-          <UIProvider>{children}</UIProvider>
+          {children}
         </CartProvider>
       </ProductProvider>
     </AuthProvider>
+    </UIProvider>
   );
 };

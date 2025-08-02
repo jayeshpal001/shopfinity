@@ -1,15 +1,16 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
-import axiosInstance from "../api/axiosInstance";
+import { UIContext } from "./UIContext";
+
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
-
+  const {setHideNav} = useContext(UIContext)
   
   
 
@@ -41,7 +42,7 @@ export const AuthProvider = ({ children }) => {
           timer: 1500,
           showConfirmButton: false,
         });
-
+        setHideNav(true); 
         navigate("/login");
       } catch (err) {
         console.error("Logout failed:", err);

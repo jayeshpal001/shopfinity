@@ -6,7 +6,7 @@ import Axios from 'axios';
 import { UIContext } from '../context/UIContext';
 
 function Login() {
-  const {setHideNave} = useContext(UIContext); 
+  const {setHideNav} = useContext(UIContext); 
   const [email, setLoginEmail] = useState('');
   const [password, setLoginPassword] = useState('');
   const [otp, setLoginOtp] = useState('');
@@ -28,7 +28,7 @@ const handleSubmit = async (e) => {
     }, { withCredentials: true });
 
     console.log('Login successful:', response.data.user);
-    setHideNave(false);
+    setHideNav(false);
     alert(response.data.message);
     navigate('/profile'); 
     setError("");

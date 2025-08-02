@@ -1,31 +1,21 @@
-import { useEffect } from "react";
-import { createContext, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 
 export const UIContext = createContext();
 
 export const UIProvider = ({ children }) => {
-  const [hideNav, setHideNave] = useState(true);
-
-   useEffect(() => {
-    const storeNav = localStorage.getItem("hideNav"); 
-    if (storeNav==='false') {
-      setHideNave(false); 
-    }
-    else{
-      setHideNave(true); 
-    }
-  }, [])
+  const [hideNav, setHideNav] = useState(true);
 
   useEffect(() => {
-   localStorage.setItem('hideNav', hideNav.toString()); 
-  }, [hideNav])
+    const storedNav = localStorage.getItem("hideNav");
+    setHideNav(storedNav !== "false");
+  }, []);
 
- 
-  
-  
+  useEffect(() => {
+    localStorage.setItem("hideNav", hideNav.toString());
+  }, [hideNav]);
 
   return (
-    <UIContext.Provider value={{ hideNav, setHideNave }}>
+    <UIContext.Provider value={{ hideNav, setHideNav }}>
       {children}
     </UIContext.Provider>
   );

@@ -55,13 +55,11 @@ const Navbar = () => {
             <NavLink to="/" text="Home" />
             <NavLink to="/cart" text="Cart" count={cartItems.length} />
 
-            {hideNav ? (
+            {hideNav && (
               <div>
                 {" "}
                 <NavLink to="/login" text="Login" />
               </div>
-            ) : (
-              <span></span>
             )}
 
             {/* Profile icon with dropdown */}
