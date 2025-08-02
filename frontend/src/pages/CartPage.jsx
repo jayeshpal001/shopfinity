@@ -109,7 +109,7 @@ export const CartPage = () => {
                       >
                         <div className="flex-shrink-0 w-32 h-32 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
                           <img
-                            src={item.image}
+                            src={item?.image}
                             alt={item.title}
                             className="w-full h-full object-contain p-2"
                           />

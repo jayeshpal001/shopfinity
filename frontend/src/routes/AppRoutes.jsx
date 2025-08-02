@@ -7,6 +7,7 @@ import {Register} from '../pages/Register'
 import { CartPage } from '../pages/CartPage';
 import UserProfile from '../pages/UserProfile';
 import { ProductContext } from '../context/ProductContext';
+import ImageUpload from '../pages/ImageUpload';
 
 export const AppRoutes = () => {
 
@@ -22,6 +23,7 @@ export const AppRoutes = () => {
         <Route path='register' element={ <Register/> } />
         <Route path='cart' element={<CartPage/>} />
          <Route path='profile' element={<UserProfile/>} />
+         <Route path="image" element={<ImageUpload/>} />
 
       </Routes>
     </div>

@@ -12,7 +12,7 @@ const globalLimiter = rateLimit({
 
 const loginLimiter = rateLimit({
     windowMs: 10*60*1000, 
-    max: 5, 
+    max: 10, 
     message: "Too many login attempts. Please try again in 10 minutes.", 
     standardHeaders: true, 
     legacyHeaders: false

@@ -31,7 +31,7 @@ export const CartCard = ({ items }) => {
       {/* Product Image */}
       <div className="relative h-56 overflow-hidden">
         <img 
-          src={`http://localhost:5200${items?.image}`} 
+          src={items?.image} 
           alt={items?.title} 
           className="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-110"
         />
