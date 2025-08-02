@@ -21,6 +21,8 @@ app.use(helmet({
   crossOriginResourcePolicy: false, // allow loading images from other origins
 }));
 
+app.set("trust proxy", 1);
+
 //  CORS config
 app.use(cors({
   origin: process.env.CLIENT_URL,

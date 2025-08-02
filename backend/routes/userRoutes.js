@@ -15,6 +15,6 @@ router.post('/register', createUser);
 router.post('/login',loginLimiter, loginUser); 
 router.post('/register/verify-otp',loginLimiter, verifyRegisterOTP) 
 router.post('/login/verify-otp', verifyLoginOtp) 
-router.get('/profile', profile)
+router.get('/profile',protect, profile)
 router.get('/logout', logout)
 module.exports = router; 
