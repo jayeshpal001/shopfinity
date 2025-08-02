@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import axiosInstance from '../api/axiosInstance';
 
 const ImageUpload = () => {
   const [image, setImage] = useState(null);             // 👈 For preview
@@ -16,7 +17,7 @@ const ImageUpload = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post('http://localhost:5200/api/upload/image', formData, {
+      const res = await axiosInstance.post('/api/upload/image', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
