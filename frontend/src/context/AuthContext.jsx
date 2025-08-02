@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import axios from "axios";
 import { UIContext } from "./UIContext";
+import axiosInstance from "../api/axiosInstance";
 
 
 export const AuthContext = createContext();
@@ -27,9 +27,7 @@ export const AuthProvider = ({ children }) => {
 
     if (result.isConfirmed) {
       try {
-        await axios.get("http://localhost:5200/users/logout", {
-          withCredentials: true,
-        });
+        await axiosInstance.get("/users/logout");
 
         setUserData(null);
         localStorage.removeItem("user");

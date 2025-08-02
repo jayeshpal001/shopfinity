@@ -2,8 +2,8 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { LockClosedIcon, EnvelopeIcon, KeyIcon  } from '@heroicons/react/24/outline';
 import { AcademicCapIcon } from "@heroicons/react/24/solid";
-import Axios from 'axios';
 import { UIContext } from '../context/UIContext';
+import axiosInstance from '../api/axiosInstance';
 
 function Login() {
   const {setHideNav} = useContext(UIContext); 
@@ -22,10 +22,10 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   setIsLoading(true);
   try {
-    const response = await Axios.post('http://localhost:5200/users/login/verify-otp', {
+    const response = await axiosInstance.post('/users/login/verify-otp', {
       email, 
       otp,
-    }, { withCredentials: true });
+    });
 
     console.log('Login successful:', response.data.user);
     setHideNav(false);
@@ -44,10 +44,10 @@ const handleSendOTP = async (e) => {
   e.preventDefault();
   setIsLoading(true);
   try {
-    const response = await Axios.post('http://localhost:5200/users/login', {
+    const response = await axiosInstance.post('/users/login', {
       email, 
       password,
-    }, { withCredentials: true });
+    });
     setOtpSent(true)
     console.log('Please enter otp: ', response.data.user);
     alert(response.data.message);

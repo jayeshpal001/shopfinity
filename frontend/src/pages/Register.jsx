@@ -6,7 +6,7 @@ import {
   CheckIcon,
 } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon } from "lucide-react";
-import axios from "axios";
+import axiosInstance from "../api/axiosInstance";
 
 export function Register() {
   const [formData, setFormData] = useState({
@@ -29,7 +29,7 @@ const handleSendOTP = async (e) => {
    e.preventDefault();
   setIsLoading(true);
   try {
-    const res = await axios.post("http://localhost:5200/users/register", {
+    const res = await axiosInstance.post("/users/register", {
       name: formData.name,
       email: formData.email,
       password: formData.password,
@@ -50,9 +50,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   setIsLoading(true);
   try {
-    const res = await axios.post("http://localhost:5200/users/register/verify-otp", formData, {
-      withCredentials: true,
-    });
+    const res = await axiosInstance.post("/users/register/verify-otp", formData);
     console.log(res.data);
     
     setServerMsg("Registration successful!");

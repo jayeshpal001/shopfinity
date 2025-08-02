@@ -2,6 +2,7 @@ import axios from 'axios';
 import  { useContext, useEffect, useState } from 'react';
 import { FiUser, FiMail, FiShoppingBag, FiMapPin, FiPhone, FiEdit, FiLoader } from 'react-icons/fi';
 import { AuthContext } from '../context/AuthContext';
+import axiosInstance from '../api/axiosInstance';
 
 const UserProfile = () => {
   const {userData, setUserData} = useContext(AuthContext); 
@@ -11,9 +12,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5200/users/profile", {
-          withCredentials: true
-        });
+        const  data  = await axiosInstance.get("/users/profile");
         setUserData(data?.user);
       } catch (err) {
         setError(err.response?.data?.error || 'Failed to load profile');
