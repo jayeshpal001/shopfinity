@@ -12,8 +12,10 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const  data  = await axiosInstance.get("/users/profile");
-        setUserData(data?.user);
+        const res  = await axiosInstance.get("/users/profile", {
+          withCredentials: true
+        });
+        setUserData(res?.data?.user);
       } catch (err) {
         setError(err.response?.data?.error || 'Failed to load profile');
       } finally {

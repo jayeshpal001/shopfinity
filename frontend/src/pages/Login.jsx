@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { LockClosedIcon, EnvelopeIcon, KeyIcon  } from '@heroicons/react/24/outline';
 import { AcademicCapIcon } from "@heroicons/react/24/solid";
+import Axios from 'axios';
 import { UIContext } from '../context/UIContext';
 import axiosInstance from '../api/axiosInstance';
 
